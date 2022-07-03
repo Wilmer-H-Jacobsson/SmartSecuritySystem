@@ -4,53 +4,48 @@ Student credentials: wh222dj
 
 Date: 2022 july 4th
 
-**  
-**
+#Smart (and simple) Security System
 
-Smart (and simple) Security System
-
-**  
-**
 
 In this tutorial I will show you how to create your own (simple) security system using a microcontroller (ESP32), a motion sensor (AM312), some code (MicroPython), your phone, Google Sheets and the platform IFTTT.
 
-**  
-**
+  
+
 
 **Time estimation for project: 4 hours**
 
-**  
-**
+ 
 
 
-# 1. Objectives
+
+## 1. Objectives
 
 
-## 1.1 The why
+### 1.1 The why
 
 After purchasing a lot of different sensors and trying to make many of them work, I got tired. It was harder than I initially anticipated. To first find information on how to properly connect this sensor with the esp32, then (often) having to find a library that was written in python and finally finding info on how to set up the code in the program was breathtaking. There was almost always a small error that led to hours trying to fix it and resulting in other issues. After getting 3 sensors to work I thought the motion sensor was the one that would best hold on its own (I did not see a way that could utilize multiple of them, not a way that would bring any more value anyway). Since I had been looking through countless youtube videos I had stumbled across a guy who connected his motion sensor to the service IFTTT. I was sort of familiar with it and could see how IFTTT sending me a message on the phone if the motion sensor was triggered could be a cool project. So I was thinking, “what if I could get a notification on my phone every time someone entered my room?”. The project therefore became sort of a simple security system.
 
 
-## 1.2 Purpose
+### 1.2 Purpose
 
 The purpose of this tutorial is to guide the reader through, step by step, how to create their own security system using the same material and software as I did.
 
 
-## 1.3 Insights that the project might bring
+### 1.3 Insights that the project might bring
 
 Hopefully this tutorial will bring insights in microcontrollers and sensors (hardware), setting up a coding environment for a ESP32, a bit of microPython coding, connecting a microcontroller to wifi, sending an HTTP request and some understanding about the service IFTTT.
 
-**  
+ 
   
   
-**
 
 
-# 2. Material
 
-**  
+## 2. Material
+
+ 
   
-**
+
 
 | **Material’s name**                                 | **What it does**                                                                                                                                | **Where to buy**                                                                                                                                         | **Price** |
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
@@ -65,15 +60,15 @@ Hopefully this tutorial will bring insights in microcontrollers and sensors (har
 **
 
 
-# 3. Environment setup
+## 3. Environment setup
 
 
-## 3.1 Why I choose Atom IDE
+### 3.1 Why I choose Atom IDE
 
 I chose Atom’s IDE as my enviroment and MicroPython as my coding language since both of these were recommended by the instructors of the course. I tried out Arduino’s IDE and for quite a while I was determined that I was going to use that instead but since I wanted to learn Python much more then C++ it came down to me redoing half my project in Atom instead. I also thought that Arduino’s IDE made it too easy (if that is even possible) since their IDE really was designed for microcontrollers. Arduino IDE did also give me errors that I was not able to fix.
 
 
-## 3.2 Setting up the environment
+### 3.2 Setting up the environment
 
 If you are struggling with any of the steps I am about to mention, just know that it is completely normal. Very often, your problems are just a google search away from being fixed so don’t lose your head. Patience is key.
 
@@ -251,7 +246,7 @@ Go onto your phone and search for IFTTT in the App Store or Google Play. Make su
 **
 
 
-# 4. Putting everything together
+## 4. Putting everything together
 
 **  
 **
@@ -266,10 +261,10 @@ _Source for picture:_[_https://github.com/iot-lnu/applied-iot/tree/master/sensor
 **
 
 
-# 5. Platforms and infrastructure
+## 5. Platforms and infrastructure
 
 
-## Why I chose IFTTT
+### Why I chose IFTTT
 
 After testing the possibility of using MQTT as a platform I chose in the end IFTTT. I almost chose MQTT since there existed a very handy tutorial for that platform but in IFTTT I got a peak of the potential to get a notification on my phone from my program which I thought was too cool not to choose. It turned out that IFTTT also gave me what I would call a better way to gather my data then MQTT. In MQTT you could personalize your own dashboard for your various sensor data but there were no satisfying ways of presenting dates that my project required. IFTTT lets me send the dates and times when my motion sensor is triggered to Google Sheets which feel like a nicer place to store your data in terms of the many more possibilities an excel file has to be turned into great visual diagrams and could easily be imported to other database managers or programs for more customized diagrams.
 
@@ -279,7 +274,7 @@ In terms of functionality, IFTTT has got a lot of connection to various service 
 **
 
 
-# 6. The code
+## 6. The code
 
 There are 3 files in my project: boot.py, config.py and main.py. They all carry at least one important part of the code. Boot.py is where the program looks to first and holds the set up for the wifi connection:
 
@@ -443,7 +438,7 @@ time.sleep(config.hold_time_sec)
 \`\`\`
 
 
-# 7. The physical network layer
+## 7. The physical network layer
 
 The data from the sensor goes directly through the wires and into the pins of the microcontroller which through WiFi sends a webhook request to an IFTTT address which triggers the actions to first send a message to my phone via the IFTTT app and then creates a new row in a specific Google Sheets document where it types the date and time of the motion. The data is sended irregularly, that is, whenever the motion sensor is triggered, data is being sent.
 
@@ -451,7 +446,7 @@ The data from the sensor goes directly through the wires and into the pins of th
 **
 
 
-# 8. Visualization and user interface
+## 8. Visualization and user interface
 
 Since I use Google Sheets to store my data it was very easy to create a diagram. Though it is debatable if this is the best way to represent this data (time stamps) like in the picture to the left, in my opinion it is completely acceptable.
 
@@ -467,7 +462,7 @@ You can filter it to result in just detection on a certain day or over a specifi
 **
 
 
-# 9. Finalizing the design
+## 9. Finalizing the design
 
 I would say that the project overall went great, I learned many, many new things in the process of making it. I will mostly remember that IoT is not as hard as it looks even though it might consume some hours just trying to find the causes of errors. It is also a way bigger area of expertise than my initial impression. I will also bring with me that python as a language is not as difficult to learn as I first thought as someone who is used to javascript.
 
