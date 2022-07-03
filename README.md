@@ -232,7 +232,7 @@ print('network config:', sta_if.ifconfig())
 ```
 
 Config.py keeps the credentials for the wifi, the configuration for the motion sensor (PIR) and the Webhooks request:
-``` python=
+```Python
 # WiFi credentials
 WIFI_SSID = 'WIFI_NAME'
 WIFI_PASS = 'WIFI_PASS'
@@ -248,7 +248,7 @@ webhooks_key = "WEBHOOKS_KEY"
 ```
 
 Finally, the main.py file does 3 things: (1) keeps the setup for sending a request to an IFTTT link. When this function is called, it takes the date and time as an argument. This is to get the exact time of the motion and to pass this date and time with the HTTP request. The setup with Webhooks we did earlier will put these in the Google sheets file. (It is passed as 2 values since HTTP “values” didn’t allow spaces as in “2022-07-04 13.04.56”.)
-``` python=
+```Python
 def http_post(values, url = 'https&#x3A;//maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
   import socket # Used by HTML get request
   import time # Used for delay
@@ -267,12 +267,12 @@ def http_post(values, url = 'https&#x3A;//maker.ifttt.com/trigger/{}/with/key/{}
 ```
 
 (2) main.py keeps the PIR setup so that the microcontroller knows which pin the motion sensor is connected to:
-``` python=
+```Python
 pir = Pin(13 ,mode=Pin.IN)
 ```
 
 (3) Last, it contains the loop to keep checking if the motion sensor is triggered and if so, calling on the HTTP function higher up in the main-file. It needs a few extra lines to get the correct date and time to know when the motion sensor is triggered. The “http_post” caller also takes the values argument which looks a bit long but really is just the current date and time in a format that Google Sheets liked better than the default.
-``` python=
+```Python
 print("Starting Detection")
 while True:
   if pir()==config.motionDetected:
