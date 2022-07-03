@@ -4,7 +4,7 @@ Student credentials: wh222dj
 
 Date: 2022 july 4th
 
-#Smart (and simple) Security System
+# Smart (and simple) Security System
 
 
 In this tutorial I will show you how to create your own (simple) security system using a microcontroller (ESP32), a motion sensor (AM312), some code (MicroPython), your phone, Google Sheets and the platform IFTTT.
