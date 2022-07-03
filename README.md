@@ -249,7 +249,7 @@ webhooks_key = "WEBHOOKS_KEY"
 
 Finally, the main.py file does 3 things: (1) keeps the setup for sending a request to an IFTTT link. When this function is called, it takes the date and time as an argument. This is to get the exact time of the motion and to pass this date and time with the HTTP request. The setup with Webhooks we did earlier will put these in the Google sheets file. (It is passed as 2 values since HTTP “values” didn’t allow spaces as in “2022-07-04 13.04.56”.)
 ```Python
-def http_post(values, url = 'https&#x3A;//maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
+def http_post(values, url = 'https://maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
   import socket # Used by HTML get request
   import time # Used for delay
   value1, value2 = values.split(' ', 1) # values = current date and time
