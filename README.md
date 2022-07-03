@@ -218,136 +218,78 @@ In terms of functionality, IFTTT has got a lot of connection to various service 
 ## 6. The code
 
 There are 3 files in my project: boot.py, config.py and main.py. They all carry at least one important part of the code. Boot.py is where the program looks to first and holds the set up for the wifi connection:
-
 ``` python=
-
-\# Setting up a wifi connection
-
+# Setting up a wifi connection
 sta_if = network.WLAN(network.STA_IF)
 
 if not sta_if.isconnected():
-
-print('connecting to network...')
-
-sta_if.active(True)
-
-sta_if.connect(config.WIFI_SSID, config.WIFI_PASS)
+  print('connecting to network...')
+  sta_if.active(True)
+  sta_if.connect(config.WIFI_SSID, config.WIFI_PASS)
 
 while not sta_if.isconnected():
-
 pass
 
 print('network config:', sta_if.ifconfig())
-
 ```
 
-
 Config.py keeps the credentials for the wifi, the configuration for the motion sensor (PIR) and the Webhooks request:
-
-
 ``` python=
-
 # WiFi credentials
-
 WIFI_SSID = 'WIFI_NAME'
-
 WIFI_PASS = 'WIFI_PASS'
 
-
 # pir sensor config
-
 motionDetected = 1
-
 noMotionDetected = 0
-
 hold_time_sec = 5
 
-
-
 # Webhooks / IFTTT config
-
 event_name = "EVENT_NAME"
-
 webhooks_key = "WEBHOOKS_KEY"
-
-
 ```
 
 Finally, the main.py file does 3 things: (1) keeps the setup for sending a request to an IFTTT link. When this function is called, it takes the date and time as an argument. This is to get the exact time of the motion and to pass this date and time with the HTTP request. The setup with Webhooks we did earlier will put these in the Google sheets file. (It is passed as 2 values since HTTP “values” didn’t allow spaces as in “2022-07-04 13.04.56”.)
-
 ``` python=
-
 def http_post(values, url = 'https&#x3A;//maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
-
-import socket # Used by HTML get request
-
-import time # Used for delay
-
-value1, value2 = values.split(' ', 1) # values = current date and time
-
-url += '?value1={}'.format(value1) # value1 = the date --- Passing on the date in the request to be stored in sheets-file
-
-url += '&value2={}'.format(value2) # value2 = the time --- Passing on the time in the request to be stored in sheets-file
-
-_, _, host, path = url.split('/', 3) # Separate URL request
-
-addr = socket.getaddrinfo(host, 80)\[0]\[-1] # Get IP address of host
-
-s = socket.socket() # Initialise the socket
-
-s.connect(addr) # Try connecting to host address
-
-# Send HTTP request to the host with specific path
-
-s.send(bytes('POST /%s HTTP/1.0\\r\\nHost: %s\\r\\n\\r\\n' % (path, host), 'utf8'))
-
-time.sleep(1) # Sleep for a second
-
-rec_bytes = s.recv(10000) # Receive response
-
-s.close()
-
+  import socket # Used by HTML get request
+  import time # Used for delay
+  value1, value2 = values.split(' ', 1) # values = current date and time
+  url += '?value1={}'.format(value1) # value1 = the date --- Passing on the date in the request to be stored in sheets-file
+  url += '&value2={}'.format(value2) # value2 = the time --- Passing on the time in the request to be stored in sheets-file
+  _, _, host, path = url.split('/', 3) # Separate URL request
+  addr = socket.getaddrinfo(host, 80)\[0]\[-1] # Get IP address of host
+  s = socket.socket() # Initialise the socket
+  s.connect(addr) # Try connecting to host address
+  # Send HTTP request to the host with specific path
+  s.send(bytes('POST /%s HTTP/1.0\\r\\nHost: %s\\r\\n\\r\\n' % (path, host), 'utf8'))
+  time.sleep(1) # Sleep for a second
+  rec_bytes = s.recv(10000) # Receive response
+  s.close()
 ```
 
 (2) main.py keeps the PIR setup so that the microcontroller knows which pin the motion sensor is connected to:
-
 ``` python=
-
 pir = Pin(13 ,mode=Pin.IN)
-
 ```
 
 (3) Last, it contains the loop to keep checking if the motion sensor is triggered and if so, calling on the HTTP function higher up in the main-file. It needs a few extra lines to get the correct date and time to know when the motion sensor is triggered. The “http_post” caller also takes the values argument which looks a bit long but really is just the current date and time in a format that Google Sheets liked better than the default.
-
 ``` python=
-
 print("Starting Detection")
-
 while True:
-
-if pir()==config.motionDetected:
-
-ntptime.settime() #syncs the to (almost) local time
-
-t = time.localtime()
-
-http_post(values="{:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1], t\[2], t\[3] + 2, t\[4], t\[5])) # calls for the HTTP request function (I have added 2 hours to match my local time)
-
-print("Motion Detected! Time: {:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1], t\[2], t\[3] + 2, t\[4], t\[5])) # optional print out to the REPL
-
+  if pir()==config.motionDetected:
+  ntptime.settime() #syncs the to (almost) local time
+  t = time.localtime()
+  http_post(values="{:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1], t\[2], t\[3] + 2, t\[4], t\[5])) # calls for the HTTP request function (I have added 2 hours to match my local time)
+  print("Motion Detected! Time: {:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1], t\[2], t\[3] + 2, t\[4], t\[5])) # optional print out to the REPL
 
 #if the motion sensor isn't triggered it will just pass
-
 if pir()==config.noMotionDetected:
-
-pass
+  pass
 
 # A short delay to stop the program from sending multiple requests after a single motion is detected
-
 time.sleep(config.hold_time_sec)
-
 ```
-
 
 ## 7. The physical network layer
 
