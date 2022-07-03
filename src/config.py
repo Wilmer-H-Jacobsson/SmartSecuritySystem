@@ -1,5 +1,5 @@
 # WiFi credentials
-WIFI_SSID = 'WIFI:NAME'
+WIFI_SSID = 'WIFI_NAME'
 WIFI_PASS = 'WIFI_PASS'
 
 # pir sensor config
