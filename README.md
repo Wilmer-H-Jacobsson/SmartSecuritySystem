@@ -56,8 +56,7 @@ Hopefully this tutorial will bring insights in microcontrollers and sensors (har
 | A Breadboard                                        | A board filled with simple connections to make it easier to connect your devices (sensors and microcontroller) together.                        | <https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/luxorparts-kopplingsdack-400-anslutningar-2-pack-p36283> \[2022-07-04]          | 99 kr     |
 | Cables (male to male)                               | Cables connect the electricity between your devices (or in our case, between the devices and the breadboard)                                    | <https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/kopplingskablar-hane-hane-65-pack-p87212> \[2022-07-04]                         | 99 kr     |
 
-**  
-**
+
 
 
 ## 3. Environment setup
@@ -72,43 +71,25 @@ I chose Atom’s IDE as my enviroment and MicroPython as my coding language sinc
 
 If you are struggling with any of the steps I am about to mention, just know that it is completely normal. Very often, your problems are just a google search away from being fixed so don’t lose your head. Patience is key.
 
-**  
-**
-
 **Step 0: Operating system**
 
 I am using macOS (Montery) for this tutorial. With that said you could probably follow along quite well with windows (10 or above).
-
-**  
-**
 
 **Step 1: install python**
 
 You need to have python installed on your computer in order for this to work. Follow the link:<https://www.python.org/downloads/>.
 
-**  
-**
-
 **Step 2: install node.js**
 
 Next, you will need node.js. Follow this link:<https://nodejs.org/en/download/>.
-
-**  
-**
 
 **Step 3: install xcode**
 
 This might not be necessary for everyone but for me an error would not go away unless I got myself Xcode. It is also nice not to have to wait for it to download and install (about 2 hours) when you are coding. Follow the link:<https://developer.apple.com/xcode/>.
 
-**  
-**
-
 **Step 4: install Atom**
 
 Go to<https://atom.io/> and choose your OS.
-
-**  
-**
 
 **Step 5: install pymakr plugin in Atom**
 
@@ -118,9 +99,6 @@ Go to<https://atom.io/> and choose your OS.
 4. Press “install” on the one from Pycom
 5. Once downloaded, a new window should cover up the lower part of Atom.
 
-**  
-  
-**
 
 **Step 6: install a driver for ESP32**
 
@@ -130,8 +108,6 @@ Sometimes the OS will do this by itself when it recognizes a new device. But to 
 
 Just to be sure it was installed, you can restart the computer.
 
-**  
-**
 
 **Step 7: flash your ESP32 and make it compatible with microPython**
 
@@ -150,9 +126,6 @@ Link to another tutorial on this:<https://hackmd.io/@lnu-iot/SyZ2diUOq#Mac-OS>
 6. I keep holding the “boot” button until the code have runned and I get 2 new buttons on the screen to click: “clear” and “program”. Once again hold down the “boot” button and press the “clear” button on the screen.
 7. Once the clear is done, download this file:<https://micropython.org/resources/firmware/esp32-20220117-v1.18.bin>
 8. Type in “1000” in the first input field and press the button on the right of it. Choose the file that you just downloaded. Hold down the “boot” button once again and this time press “program”. Once the code has stopped running, you can close the tab.
-
-**  
-**
 
 **Step 8: Copy my code to your project**
 
@@ -176,9 +149,6 @@ Alternatively, as I said, you could also create your own folder and files and th
 6. create a third one and name it config.py (these 3 files are usually the standard for a microPython program).
 7. Copy and paste the code from here:<https://github.com/Wilmerrrrr/smartSecuritySystem>
 
-**  
-**
-
 **Step 9: Connect your ESP32 to Atom**
 
 1. go to Atom and inside the pyMakr-box, click on settings.
@@ -190,16 +160,9 @@ Alternatively, as I said, you could also create your own folder and files and th
 7. Start Atom again and inside the pyMakr window, 1. choose the project you created and 2. your device.
 8. If everything went right the toggle on the left should be green and the REPL should give you this “>>>” where you can type code. If it is red, try replugging the device again and close the device tab and open a new one.
 
-**  
-  
-**
-
 **Step 10: How you upload code**
 
 To upload code, you simply save the files in the project and then tap on the arrow that is pointing up in the PyMakr window.
-
-**  
-**
 
 **Step 11: create an account on IFTTT and set up an “applet”**
 
@@ -214,9 +177,6 @@ To upload code, you simply save the files in the project and then tap on the arr
 9. Search for “google sheets” and click on the result. Choose “Add row to spreadsheet”.
 10. On the first dropdown, type in/connect to your google account. Give your spreadsheet a name (could be any).
 11. Under “formatted row” type in the following: “{{Value1}} {{Value2}}|||1”. The driver folder path could be anything. Press create action.
-
-**  
-**
 
 **Step 12: Set up the config.py file**
 
@@ -235,34 +195,18 @@ To upload code, you simply save the files in the project and then tap on the arr
 
 Make sure you use a WiFi with 2,4 GHz or the ESP32 can not connect.
 
-**  
-**
-
 **Step 13: download the IFTTT app**
 
 Go onto your phone and search for IFTTT in the App Store or Google Play. Make sure to log into the same account as the one created before.
 
-**  
-**
-
 
 ## 4. Putting everything together
-
-**  
-**
-
 [![](https://lh5.googleusercontent.com/UfTEr0iS6X3T_CmMCrAIbAc3i2_FRlXLlcF5PABfYPE6N92mn0k1BW2-A2eD5nkMr75HNzYNZtKRVKGH6wi3XYTd566pzVYq9uH3c4RhbFYZyti7K_AychW8ZckLNuCRLJf_XK7IIUXpxZUtJP4)](https://github.com/iot-lnu/applied-iot/tree/master/sensor-examples/HC-SR501%20-%20PIR%20Sensor)
 
 _Source for picture:_[_https://github.com/iot-lnu/applied-iot/tree/master/sensor-examples/HC-SR501%20-%20PIR%20Sensor_](https://github.com/iot-lnu/applied-iot/tree/master/sensor-examples/HC-SR501%20-%20PIR%20Sensor)__
 
-**  
-  
-  
-**
-
 
 ## 5. Platforms and infrastructure
-
 
 ### Why I chose IFTTT
 
@@ -270,18 +214,12 @@ After testing the possibility of using MQTT as a platform I chose in the end IFT
 
 In terms of functionality, IFTTT has got a lot of connection to various service providers such as Google, Spotify, Slack and many, many more and can therefore be used in a lot of different ways. You simply give an ‘if statement’ like “if I post something on Instagram” and then give it a ‘then statement’ like “then post the same post on Twitter”. You can both have multiple triggers and multiple actions on the triggers (this does however come with a cost of 31 kr/month). If you want a completely free solution you could use both IFTTT and MQTT, the first one to send notification to your phone and second one to store the data (although somewhat difficult to represent in a timeline or similar).
 
-**  
-**
-
 
 ## 6. The code
 
 There are 3 files in my project: boot.py, config.py and main.py. They all carry at least one important part of the code. Boot.py is where the program looks to first and holds the set up for the wifi connection:
 
-**  
-**
-
-\`\`\` python=
+``` python=
 
 \# Setting up a wifi connection
 
@@ -301,29 +239,22 @@ pass
 
 print('network config:', sta_if.ifconfig())
 
-\`\`\`
+```
 
-**  
-  
-**
 
 Config.py keeps the credentials for the wifi, the configuration for the motion sensor (PIR) and the Webhooks request:
 
-**  
-**
 
-\`\`\` python=
+``` python=
 
-\# WiFi credentials
+# WiFi credentials
 
 WIFI_SSID = 'WIFI_NAME'
 
 WIFI_PASS = 'WIFI_PASS'
 
-**  
-**
 
-\# pir sensor config
+# pir sensor config
 
 motionDetected = 1
 
@@ -331,29 +262,20 @@ noMotionDetected = 0
 
 hold_time_sec = 5
 
-**  
-**
 
-\# Webhooks / IFTTT config
+
+# Webhooks / IFTTT config
 
 event_name = "EVENT_NAME"
 
 webhooks_key = "WEBHOOKS_KEY"
 
-**  
-**
 
-\`\`\`
-
-**  
-**
+```
 
 Finally, the main.py file does 3 things: (1) keeps the setup for sending a request to an IFTTT link. When this function is called, it takes the date and time as an argument. This is to get the exact time of the motion and to pass this date and time with the HTTP request. The setup with Webhooks we did earlier will put these in the Google sheets file. (It is passed as 2 values since HTTP “values” didn’t allow spaces as in “2022-07-04 13.04.56”.)
 
-**  
-**
-
-\`\`\` python=
+``` python=
 
 def http_post(values, url = 'https&#x3A;//maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
 
@@ -367,7 +289,7 @@ url += '?value1={}'.format(value1) # value1 = the date --- Passing on the date i
 
 url += '&value2={}'.format(value2) # value2 = the time --- Passing on the time in the request to be stored in sheets-file
 
-\_, \_, host, path = url.split('/', 3) # Separate URL request
+_, _, host, path = url.split('/', 3) # Separate URL request
 
 addr = socket.getaddrinfo(host, 80)\[0]\[-1] # Get IP address of host
 
@@ -375,7 +297,7 @@ s = socket.socket() # Initialise the socket
 
 s.connect(addr) # Try connecting to host address
 
-\# Send HTTP request to the host with specific path
+# Send HTTP request to the host with specific path
 
 s.send(bytes('POST /%s HTTP/1.0\\r\\nHost: %s\\r\\n\\r\\n' % (path, host), 'utf8'))
 
@@ -385,28 +307,19 @@ rec_bytes = s.recv(10000) # Receive response
 
 s.close()
 
-\`\`\`
+```
 
 (2) main.py keeps the PIR setup so that the microcontroller knows which pin the motion sensor is connected to:
 
-**  
-**
-
-\`\`\` python=
+``` python=
 
 pir = Pin(13 ,mode=Pin.IN)
 
-\`\`\`
-
-**  
-**
+```
 
 (3) Last, it contains the loop to keep checking if the motion sensor is triggered and if so, calling on the HTTP function higher up in the main-file. It needs a few extra lines to get the correct date and time to know when the motion sensor is triggered. The “http_post” caller also takes the values argument which looks a bit long but really is just the current date and time in a format that Google Sheets liked better than the default.
 
-**  
-**
-
-\`\`\` python=
+``` python=
 
 print("Starting Detection")
 
@@ -422,28 +335,23 @@ http_post(values="{:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1]
 
 print("Motion Detected! Time: {:04d}-{:02d}-{:02d} {:02d}.{:02d}.{:02d}".format(t\[0], t\[1], t\[2], t\[3] + 2, t\[4], t\[5])) # optional print out to the REPL
 
-**  
-**
 
-\#if the motion sensor isn't triggered it will just pass
+#if the motion sensor isn't triggered it will just pass
 
 if pir()==config.noMotionDetected:
 
 pass
 
-\# A short delay to stop the program from sending multiple requests after a single motion is detected
+# A short delay to stop the program from sending multiple requests after a single motion is detected
 
 time.sleep(config.hold_time_sec)
 
-\`\`\`
+```
 
 
 ## 7. The physical network layer
 
 The data from the sensor goes directly through the wires and into the pins of the microcontroller which through WiFi sends a webhook request to an IFTTT address which triggers the actions to first send a message to my phone via the IFTTT app and then creates a new row in a specific Google Sheets document where it types the date and time of the motion. The data is sended irregularly, that is, whenever the motion sensor is triggered, data is being sent.
-
-**  
-**
 
 
 ## 8. Visualization and user interface
@@ -458,23 +366,11 @@ You have got your list of every occurance when the motion sensor has been trigge
 
 You can filter it to result in just detection on a certain day or over a specific period of days (for some reason they have not added the feature to filter by time unfortunately). Data is saved in the sheets file as soon as a new row has been added (which is irregular as pointed out in the last section). I really tried to find a way to delete old data after a certain period of time had passed but it turned out to be too difficult and time consuming. Google do have API’s for all their apps Sheets included, but there was so many additional steps to make it work that I: A. could barely make it work with 6 hours of fixing and B. would add too many additional steps in this tutorial and the result would not at all, in my opinion, be comparable with that effort.
 
-**  
-**
-
 
 ## 9. Finalizing the design
 
 I would say that the project overall went great, I learned many, many new things in the process of making it. I will mostly remember that IoT is not as hard as it looks even though it might consume some hours just trying to find the causes of errors. It is also a way bigger area of expertise than my initial impression. I will also bring with me that python as a language is not as difficult to learn as I first thought as someone who is used to javascript.
 
-**  
-**
-
 Unfortunately, I was not too happy with my result. I felt it was way too simple and I feel a bit embarrassed that I could not pull off a project with a little more complexity. Hopefully I will keep IoT as a hobby and try more challenging projects in the future.
 
 ![](https://lh3.googleusercontent.com/xkFPeSweD2h99rN2HtqdEvw9vK6Tb4hUEBI7QLgWQKhZ5ReqGGm03vaINhv-7JvyTJubhQqgNdvXfBynyhGDR_sO2_cbDZXAO9dNrFuygHO92Jnr2EquGnYMoRGuR5I5ObwW3DofgIJQ7aVREts)![](https://lh4.googleusercontent.com/NH9Nv33cbYJbOrJJDsiiLJP6Cy1ouwhtXF1a6ajXILgMFi-ZnYq9GfLpgelMdgz8__T3rZp245VNduOnUoStXEc2n_zYoFi2XVmz8T5dFpGDfCp-3U7776_SGS-eM6NbW227KDP_Ssp2i5X7vWY)
-
-  
-  
-  
-  
-  
