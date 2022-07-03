@@ -216,9 +216,8 @@ In terms of functionality, IFTTT has got a lot of connection to various service 
 
 
 ## 6. The code
-
 There are 3 files in my project: boot.py, config.py and main.py. They all carry at least one important part of the code. Boot.py is where the program looks to first and holds the set up for the wifi connection:
-``Python
+```Python
 # Setting up a wifi connection
 sta_if = network.WLAN(network.STA_IF)
 if not sta_if.isconnected():
