@@ -2,6 +2,7 @@ import network
 import config
 
 # Setting up a wifi connection
+# code credit to: https://hackmd.io/@lnu-iot/r1aui0B59#Generic-ESP32
 sta_if = network.WLAN(network.STA_IF)
 if not sta_if.isconnected():
     print('connecting to network...')

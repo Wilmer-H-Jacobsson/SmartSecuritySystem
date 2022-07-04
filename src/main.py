@@ -6,6 +6,7 @@ from machine import Pin
 import ntptime
 
 # Setup for sending a request to IFTTT
+# orginal code from (but edited): https://hackmd.io/@lnu-iot/SJ8TGsUd5#Connecting-ESP32-boards
 def http_post(values, url = 'https://maker.ifttt.com/trigger/{}/with/key/{}'.format(config.event_name, config.webhooks_key)):
     import socket                           # Used by HTML get request
     import time                              # Used for delay
